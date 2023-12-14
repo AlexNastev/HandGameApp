@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HandGameApp.MainPage">
+
+    <Grid RowDefinitions=".6*, .4*">
+        <VerticalStackLayout Spacing="10">
+            <Label FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Text="{Binding GameStatus}"/>
+
+            <Image Source="{Binding CurrentImage}"
+                   HeightRequest="200"/>
+
+            <Label FontSize="40"
+                   HorizontalOptions="Center"
+                   Text="{Binding Spotlight}"
+                   VerticalOptions="Center"/>
+
+            <Label FontSize="Large"
+                   HorizontalTextAlignment="Center"
+                   Text="{Binding Message}"/>
+            <Button HorizontalOptions="Center"
+                    Text="Reset"
+                    WidthRequest="100"
+                    Clicked="Reset_Clicked"/>
+        </VerticalStackLayout>
+
+        <FlexLayout Grid.Row="1"
+                    Wrap="Wrap"
+                    JustifyContent="SpaceEvenly"
+                    BindableLayout.ItemsSource="{Binding Letters}"
+                    x:Name="lettersContainer">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Button HeightRequest="50"
+                            Text="{Binding .}"
+                            WidthRequest="50"
+                            Clicked="Button_Clicked"/>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+            
+        </FlexLayout>
+    </Grid>
+
+</ContentPage>
